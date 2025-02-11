@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Pacifico } from "next/font/google";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../../packages/lib/utils";
 import logo from '@/assets/logo.png'
 
 const pacifico = Pacifico({

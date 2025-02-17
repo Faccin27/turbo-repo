@@ -8,7 +8,6 @@ type BehanceUser = {
   url: string;
 };
 
-// Placeholder base64 de uma imagem 1x1 cinza
 const PLACEHOLDER_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==';
 
 export async function scrapeBehanceUser(username: string): Promise<BehanceUser | null> {
@@ -18,7 +17,6 @@ export async function scrapeBehanceUser(username: string): Promise<BehanceUser |
     const { data } = await axios.get(url);
     const $ = cheerio.load(data);
 
-    // Utilizando seletores mais específicos e com fallbacks
     const displayName = $('[data-id="profile-name"]').text().trim() || 
                        $('.Profile-name').text().trim() ||
                        $('h1').first().text().trim();
@@ -27,15 +25,13 @@ export async function scrapeBehanceUser(username: string): Promise<BehanceUser |
                       $('.Profile-occupation').text().trim() ||
                       $('.UserInfo-line').first().text().trim();
 
-    // Buscando a imagem do perfil com múltiplos seletores possíveis
-    const profileImage = $('img[alt*="avatar" i]').attr('src') ||              // Busca por alt contendo "avatar"
-    $('img[alt*="profile picture" i]').attr('src') ||      // Busca por alt contendo "profile picture"
-    $('div[class*="Avatar"] img').attr('src') ||           // Busca em div com classe contendo "Avatar"
-    $('div[class*="UserInfo"] img').first().attr('src');   // Busca na seção de informações do usuário
+    const profileImage = $('img[alt*="avatar" i]').attr('src') ||              
+    $('img[alt*="profile picture" i]').attr('src') ||      
+    $('div[class*="Avatar"] img').attr('src') ||           
+    $('div[class*="UserInfo"] img').first().attr('src');   
 
 
                         
-    console.log("tempo", profileImage)
 
     if (!displayName) {
       throw new Error('Nome do usuário não encontrado');

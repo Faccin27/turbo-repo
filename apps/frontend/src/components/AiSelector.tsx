@@ -10,11 +10,11 @@ interface AIOption {
 }
 
 const aiOptions: AIOption[] = [
-  { id: "docs", title: "Documentação", icon: "📚", href: "http://localhost:3007" },
   { id: "chatgpt", title: "ChatGPT", icon: "🤖", href: "http://localhost:4000" },
   { id: "gemini", title: "Gemini", icon: "🔮", href: "http://localhost:5000" },
   { id: "claude", title: "Claude", icon: "🐱‍👤", href: "http://localhost:3050" },
   { id: "deepseek", title: "DeepSeek", icon: "🦈", href: "http://localhost:3070" },
+  { id: "docs", title: "Documentação", icon: "📚", href: "http://localhost:3007" },
   { id: "soon", title: "Soon...", icon: "🚀", href: "" },
 ]
 

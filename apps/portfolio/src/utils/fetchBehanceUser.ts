@@ -12,7 +12,7 @@ const PLACEHOLDER_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAA
 
 export async function scrapeBehanceUser(username: string): Promise<BehanceUser | null> {
   const url = `https://www.behance.net/${username}`;
-  
+
   try {
     const { data } = await axios.get(url);
     const $ = cheerio.load(data);
@@ -31,7 +31,8 @@ export async function scrapeBehanceUser(username: string): Promise<BehanceUser |
     $('div[class*="UserInfo"] img').first().attr('src');   
 
 
-                        
+    console.log(displayName)
+    
 
     if (!displayName) {
       throw new Error('Nome do usuário não encontrado');
